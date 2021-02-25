@@ -1,24 +1,24 @@
 #include <avr/io.h>
 #include "stdlib.h"
 
+const uint8_t NUMBER_OF_PIXELS = 9;
+const uint16_t NUMBER_OF_BYTES = NUMBER_OF_PIXELS * 3;
 
-uint8_t values[9] = {
-	0, 40, 0,
-	40, 0, 0,
-	0, 0, 40
+const uint8_t values[NUMBER_OF_BYTES] = {
+	0, 10, 0,
+	10, 0, 0,
+	0, 0, 10
 };
 
-volatile uint8_t *ptr = NULL;
-
-void show()
+void show(uint8_t *bytes, uint16_t count)
 {	
 	const uint8_t high = 1;
 	const uint8_t low = 0;
 	
+    volatile uint8_t *ptr = bytes;
 	volatile uint8_t value = *ptr++;
-	volatile uint16_t byte_count = 9;
-	volatile uint8_t t1 = low;
-	volatile uint8_t t2 = high;
+	volatile uint16_t byte_count = count;
+	volatile uint8_t t1 = low, t2 = high;
 	
 	if (value & 0x80)
 		t1 = high;
@@ -116,11 +116,11 @@ int main(void)
 	DDRD = 0x01;
 	PORTD = 0x00;
 	
-	ptr = (uint8_t *)malloc(9 * sizeof(uint8_t));
-	for (uint8_t i = 0; i < 9; ++i)
-		ptr[i] = values[i];
+	uint8_t *bytes = (uint8_t *)malloc(NUMBER_OF_BYTES * sizeof(uint8_t));
+	for (uint8_t i = 0; i < NUMBER_OF_BYTES; ++i)
+		bytes[i] = values[i];
 	
-	show();
+	show(bytes, NUMBER_OF_BYTES);
 	
     while (1) 
     {
