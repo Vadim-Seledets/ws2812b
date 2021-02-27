@@ -13,41 +13,41 @@ const uint16_t NUMBER_OF_BYTES = NUMBER_OF_PIXELS * 3;
 extern uint8_t *vram;
 
 enum class ColorModel {
-	RGB,
-	HSL // Not yet implemented
+    RGB,
+    HSL // Not yet implemented
 };
 
 struct RGB {
-	uint8_t red;
-	uint8_t green;
-	uint8_t blue;
-	
-	RGB(uint8_t r, uint8_t g, uint8_t b)
-	    : red(r), green(g), blue(b) {}
+    uint8_t red;
+    uint8_t green;
+    uint8_t blue;
+    
+    RGB(uint8_t r, uint8_t g, uint8_t b)
+        : red(r), green(g), blue(b) {}
 };
 
 struct HSL {
-	uint8_t hue;
-	uint8_t saturation;
-	uint8_t lightness;
+    uint8_t hue;
+    uint8_t saturation;
+    uint8_t lightness;
 };
 
 struct Color
 {
-	ColorModel color_model;
-	union
-	{
-		RGB rgb;
-		HSL hsl;
-	};
-	
-	Color(ColorModel cm, RGB value)
-	    : color_model(cm), rgb(value) {}
+    ColorModel color_model;
+    union
+    {
+        RGB rgb;
+        HSL hsl;
+    };
+    
+    Color(ColorModel cm, RGB value)
+        : color_model(cm), rgb(value) {}
 };
 
 inline uint8_t xy_to_pixel_num(const uint8_t x, const uint8_t y)
 {
-	return ((x + 1) / 2) * (2 * MATRIX_HEIGHT - 1) + (x / 2) + (x % 2 == 0 ? y : -y);
+    return ((x + 1) / 2) * (2 * MATRIX_HEIGHT - 1) + (x / 2) + (x % 2 == 0 ? y : -y);
 }
 
 inline void clear()

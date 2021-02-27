@@ -15,15 +15,17 @@ int main(void)
     DDRD = 0x01;
     PORTD = 0x00;
 
-	clear();
-	
-	Color color{ColorModel::RGB, {0, 10, 10}};
-    set_pixel(3, 5, color);
-	set_pixel(4, 5, color);
+    clear();
 
-	show(vram, NUMBER_OF_BYTES);
-	
     while (1)
     {
+        for (uint8_t x = 0; x < 255; ++x)
+        {
+            for (uint8_t y = 0; y < 255; ++y)
+            {
+                set_pixel(3, 5, { ColorModel::RGB, {0, 10, 10} });
+                show(vram, NUMBER_OF_BYTES);
+            }
+        }
     }
 }
