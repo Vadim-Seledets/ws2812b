@@ -103,7 +103,7 @@ void show(uint8_t *bytes, uint16_t count)
 void set_pixel(const uint8_t x, const uint8_t y, const Color color)
 {
     const uint8_t pixel_num = xy_to_pixel_num(x, y);
-    const uint8_t index = pixel_num * 3;
+    const uint16_t index = pixel_num * 3;
     vram[index] = color.rgb.green;
     vram[index + 1] = color.rgb.red;
     vram[index + 2] = color.rgb.blue;
