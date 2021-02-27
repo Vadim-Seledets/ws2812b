@@ -13,7 +13,7 @@ void show(uint8_t *bytes, uint16_t count)
 	volatile uint8_t t1 = low, t2 = high;
 
 	if (value & 0x80)
-	t1 = high;
+	    t1 = high;
 
 	asm volatile(
 	"start:                             ;   clk        size  \n\t"
