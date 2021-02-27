@@ -15,16 +15,16 @@ int main(void)
     DDRD = 0x01;
     PORTD = 0x00;
 
-    clear();
-
     while (1)
     {
-        for (uint8_t x = 0; x < 255; ++x)
+        for (uint8_t x = 0; x < MATRIX_WIDTH; ++x)
         {
-            for (uint8_t y = 0; y < 255; ++y)
+            for (uint8_t y = 0; y < MATRIX_HEIGHT; ++y)
             {
-                set_pixel(3, 5, { ColorModel::RGB, {0, 10, 10} });
+                clear();
+                set_pixel(x, y, { ColorModel::RGB, {50, y * 2, 0} });
                 show(vram, NUMBER_OF_BYTES);
+                sleep(600);
             }
         }
     }
