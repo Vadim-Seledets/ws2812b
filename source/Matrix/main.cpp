@@ -19,13 +19,31 @@ int main(void)
     {
         for (uint8_t x = 0; x < MATRIX_WIDTH; ++x)
         {
-            for (uint8_t y = 0; y < MATRIX_HEIGHT; ++y)
-            {
-                clear();
-                set_pixel(x, y, { ColorModel::RGB, {50, y * 2, 0} });
-                show(vram, NUMBER_OF_BYTES);
-                sleep(600);
-            }
+            clear();
+            set_pixel(x, 0, {ColorModel::RGB, {30, 0, 0}});
+            show(vram, NUMBER_OF_BYTES);
+            sleep(300);
+        }
+        for (uint8_t y = 0; y < MATRIX_HEIGHT; ++y)
+        {
+            clear();
+            set_pixel(MATRIX_WIDTH - 1, y, {ColorModel::RGB, {0, 30, 0}});
+            show(vram, NUMBER_OF_BYTES);
+            sleep(300);
+        }
+        for (uint8_t x = 14; x > 0; ++x)
+        {
+            clear();
+            set_pixel(x, MATRIX_HEIGHT - 1, {ColorModel::RGB, {0, 0, 30}});
+            show(vram, NUMBER_OF_BYTES);
+            sleep(300);
+        }
+        for (uint8_t y = 14; y > 0; ++y)
+        {
+            clear();
+            set_pixel(0, y, {ColorModel::RGB, {30, 30, 30}});
+            show(vram, NUMBER_OF_BYTES);
+            sleep(300);
         }
     }
 }
