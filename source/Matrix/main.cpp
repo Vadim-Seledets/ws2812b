@@ -1,6 +1,7 @@
 #include <avr/io.h>
 #include "stdlib.h"
 #include "util/delay.h"
+#include "string.h"
 
 void sleep(long long delayMs)
 {
@@ -8,13 +9,12 @@ void sleep(long long delayMs)
         _delay_ms(1);
 }
 
-const uint8_t NUMBER_OF_PIXELS = 9;
+const uint8_t MATRIX_WIDTH = 4;
+const uint8_t MATRIX_HEIGHT = 4;
+const uint8_t NUMBER_OF_PIXELS = MATRIX_WIDTH * MATRIX_HEIGHT;
 const uint16_t NUMBER_OF_BYTES = NUMBER_OF_PIXELS * 3;
 
-const uint8_t values[NUMBER_OF_BYTES] = {
-    0, 10, 0,
-    10, 0, 0,
-    0, 0, 10};
+uint8_t *vram = (uint8_t *)malloc(NUMBER_OF_BYTES * sizeof(uint8_t));
 
 void show(uint8_t *bytes, uint16_t count)
 {
@@ -114,6 +114,53 @@ void show(uint8_t *bytes, uint16_t count)
           [low]        "r"(low));
 }
 
+enum class ColorModel {
+    RGB,
+    HSL // Not yet implemented
+};
+
+struct RGB {
+    uint8_t red;
+    uint8_t green;
+    uint8_t blue;
+	
+	RGB(uint8_t r, uint8_t g, uint8_t b)
+        : red(r), green(g), blue(b) {}
+};
+
+struct HSL {
+    uint8_t hue;
+    uint8_t saturation;
+    uint8_t lightness;
+};
+
+struct Color
+{
+    ColorModel color_model;
+    union
+    {
+        RGB rgb;
+        HSL hsl;
+    };
+	
+	Color(ColorModel cm, RGB &value)
+	: color_model(cm), rgb(value) {}
+};
+
+inline uint8_t xy_to_pixel_num(const uint8_t x, const uint8_t y)
+{
+	return ((x + 1) / 2) * (2 * MATRIX_HEIGHT - 1) + (x / 2) + (x % 2 == 0 ? y : -y);
+}
+
+void set_pixel(const uint8_t x, const uint8_t y, const Color color)
+{
+	const uint8_t pixel_num = xy_to_pixel_num(x, y);
+	const uint8_t index = pixel_num * 3;
+	vram[index] = color.rgb.green;
+	vram[index + 1] = color.rgb.red;
+	vram[index + 2] = color.rgb.blue;
+}
+
 int main(void)
 {
     // Matrix initialization
@@ -121,28 +168,15 @@ int main(void)
     DDRD = 0x01;
     PORTD = 0x00;
 
-    uint8_t *bytes = (uint8_t *)malloc(NUMBER_OF_BYTES * sizeof(uint8_t));
-    for (uint8_t i = 0; i < NUMBER_OF_BYTES; ++i)
-        bytes[i] = values[i];
+	memset(vram, 0, NUMBER_OF_BYTES);
 
+	RGB rgb{10, 0, 0};
+	Color color{ColorModel::RGB, rgb};
+    set_pixel(0, 3, color);
+
+	show(vram, NUMBER_OF_BYTES);
+	
     while (1)
     {
-        sleep(300);
-        for (uint8_t i = 0; i < 255; ++i)
-        {
-            bytes[1] = i;
-            bytes[3] = i;
-            bytes[8] = i;
-            show(bytes, NUMBER_OF_BYTES);
-            sleep(50);
-        }
-        for (uint8_t i = 255; i > 0; --i)
-        {
-            bytes[1] = i;
-            bytes[3] = i;
-            bytes[8] = i;
-            show(bytes, NUMBER_OF_BYTES);
-            sleep(50);
-        }
     }
 }
