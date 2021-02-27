@@ -15,11 +15,12 @@ int main(void)
     DDRD = 0x01;
     PORTD = 0x00;
 
-	memset(vram, 0, NUMBER_OF_BYTES);
-
+	clear();
+	
 	RGB rgb{0, 10, 0};
 	Color color{ColorModel::RGB, rgb};
-    set_pixel(4, 6, color);
+    set_pixel(3, 5, color);
+	set_pixel(4, 5, color);
 
 	show(vram, NUMBER_OF_BYTES);
 	

@@ -100,11 +100,6 @@ void show(uint8_t *bytes, uint16_t count)
 	[low]        "r"(low));
 }
 
-inline uint8_t xy_to_pixel_num(const uint8_t x, const uint8_t y)
-{
-	return ((x + 1) / 2) * (2 * MATRIX_HEIGHT - 1) + (x / 2) + (x % 2 == 0 ? y : -y);
-}
-
 void set_pixel(const uint8_t x, const uint8_t y, const Color color)
 {
 	const uint8_t pixel_num = xy_to_pixel_num(x, y);
