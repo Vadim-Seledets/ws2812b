@@ -23,7 +23,7 @@ struct RGB {
 	uint8_t blue;
 	
 	RGB(uint8_t r, uint8_t g, uint8_t b)
-	: red(r), green(g), blue(b) {}
+	    : red(r), green(g), blue(b) {}
 };
 
 struct HSL {
@@ -41,8 +41,8 @@ struct Color
 		HSL hsl;
 	};
 	
-	Color(ColorModel cm, RGB &value)
-	: color_model(cm), rgb(value) {}
+	Color(ColorModel cm, RGB value)
+	    : color_model(cm), rgb(value) {}
 };
 
 inline uint8_t xy_to_pixel_num(const uint8_t x, const uint8_t y)

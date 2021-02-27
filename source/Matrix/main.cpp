@@ -17,8 +17,7 @@ int main(void)
 
 	clear();
 	
-	RGB rgb{0, 10, 0};
-	Color color{ColorModel::RGB, rgb};
+	Color color{ColorModel::RGB, {0, 10, 10}};
     set_pixel(3, 5, color);
 	set_pixel(4, 5, color);
 
