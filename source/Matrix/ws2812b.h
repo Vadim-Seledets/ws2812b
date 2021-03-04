@@ -2,6 +2,7 @@
 #define WS2812B_H_
 
 #include <avr/io.h>
+#include <avr/interrupt.h>
 #include "stdlib.h"
 #include "string.h"
 
@@ -52,7 +53,9 @@ inline uint8_t xy_to_pixel_num(const uint8_t x, const uint8_t y)
 
 inline void clear()
 {
-    memset(vram, 0, NUMBER_OF_BYTES);
+    cli();
+	memset(vram, 0, NUMBER_OF_BYTES);
+    sei();
 }
 
 void show(uint8_t *bytes, uint16_t count);
