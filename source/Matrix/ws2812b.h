@@ -64,21 +64,21 @@ struct Color
 // const Color Navy = { ColorModel::RGB, { 0, 0, 128 } };
 
 const Color Black = { ColorModel::RGB, { 0, 0, 0 } };
-const Color White = { ColorModel::RGB, { 77, 77, 77 } };
-const Color Red = { ColorModel::RGB, { 77, 0, 0 } };
-const Color Lime = { ColorModel::RGB, { 0, 77, 0 } };
-const Color Blue = { ColorModel::RGB, { 0, 0, 77 } };
-const Color Yellow = { ColorModel::RGB, { 77, 77, 0 } };
-const Color Cyan = { ColorModel::RGB, { 0, 77, 77 } };
-const Color Magenta = { ColorModel::RGB, { 77, 0, 77 } };
-const Color Silver = { ColorModel::RGB, { 58, 58, 58 } };
-const Color Gray = { ColorModel::RGB, { 38, 38, 38 } };
-const Color Maroon = { ColorModel::RGB, { 38, 0, 0 } };
-const Color Olive = { ColorModel::RGB, { 38, 38, 0 } };
-const Color Green = { ColorModel::RGB, { 0, 38, 0 } };
-const Color Purple = { ColorModel::RGB, { 38, 0, 38 } };
-const Color Teal = { ColorModel::RGB, { 0, 38, 38 } };
-const Color Navy = { ColorModel::RGB, { 0, 0, 38 } };
+const Color White = { ColorModel::RGB, { 25, 25, 25 } };
+const Color Red = { ColorModel::RGB, { 25, 0, 0 } };
+const Color Lime = { ColorModel::RGB, { 0, 25, 0 } };
+const Color Blue = { ColorModel::RGB, { 0, 0, 25 } };
+const Color Yellow = { ColorModel::RGB, { 25, 25, 0 } };
+const Color Cyan = { ColorModel::RGB, { 0, 25, 25 } };
+const Color Magenta = { ColorModel::RGB, { 25, 0, 25 } };
+const Color Silver = { ColorModel::RGB, { 19, 19, 19 } };
+const Color Gray = { ColorModel::RGB, { 13, 13, 13 } };
+const Color Maroon = { ColorModel::RGB, { 13, 0, 0 } };
+const Color Olive = { ColorModel::RGB, { 13, 13, 0 } };
+const Color Green = { ColorModel::RGB, { 0, 13, 0 } };
+const Color Purple = { ColorModel::RGB, { 13, 0, 13 } };
+const Color Teal = { ColorModel::RGB, { 0, 13, 13 } };
+const Color Navy = { ColorModel::RGB, { 0, 0, 13 } };
 
 inline uint8_t xy_to_pixel_num(const uint8_t x, const uint8_t y)
 {
