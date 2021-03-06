@@ -108,11 +108,11 @@ void draw()
     set_pixel(7, 8, Blue);
     set_pixel(8, 2, Black);
     set_pixel(9, 4, Black);
-    set_pixel(9, 2, { ColorModel::RGB, { 72, 69, 42 } }); 
-	set_pixel(9, 3, { ColorModel::RGB, { 72, 69, 42 } }); 
-    set_pixel(10, 2, { ColorModel::RGB, { 72, 69, 42 } });
-    set_pixel(10, 3, { ColorModel::RGB, { 72, 69, 42 } });
-    set_pixel(10, 4, { ColorModel::RGB, { 72, 69, 42 } });
+    set_pixel(9, 2, { ColorModel::RGB, { 19, 18, 11 } }); 
+	set_pixel(9, 3, { ColorModel::RGB, { 19, 18, 11 } }); 
+    set_pixel(10, 2, { ColorModel::RGB, { 19, 18, 11 } });
+    set_pixel(10, 3, { ColorModel::RGB, { 19, 18, 11 } });
+    set_pixel(10, 4, { ColorModel::RGB, { 19, 18, 11 } });
     set_pixel(7, 1, White);
     set_pixel(7, 2, White);
     set_pixel(7, 3, White);
