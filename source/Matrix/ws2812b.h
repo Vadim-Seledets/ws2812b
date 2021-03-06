@@ -1,10 +1,10 @@
 #ifndef WS2812B_H_
 #define WS2812B_H_
 
-#include <avr/io.h>
-#include <avr/interrupt.h>
-#include "stdlib.h"
-#include "string.h"
+ #include <avr/io.h>
+ #include <avr/interrupt.h>
+ #include "stdlib.h"
+ #include "string.h"
 
 const uint8_t MATRIX_WIDTH = 16;
 const uint8_t MATRIX_HEIGHT = 16;
@@ -46,6 +46,42 @@ struct Color
         : color_model(cm), rgb(value) {}
 };
 
+// const Color Red = { ColorModel::RGB, { 255, 0, 0 } };
+// const Color Black = { ColorModel::RGB, { 0, 0, 0 } };
+// const Color White = { ColorModel::RGB, { 255, 255, 255 } };
+// const Color Red = { ColorModel::RGB, { 255, 0, 0 } };
+// const Color Lime = { ColorModel::RGB, { 0, 255, 0 } };
+// const Color Blue = { ColorModel::RGB, { 0, 0, 255 } };
+// const Color Yellow = { ColorModel::RGB, { 255, 255, 0 } };
+// const Color Cyan = { ColorModel::RGB, { 0, 255, 255 } };
+// const Color Magenta = { ColorModel::RGB, { 255, 0, 255 } };
+// const Color Silver = { ColorModel::RGB, { 192, 192, 192 } };
+// const Color Gray = { ColorModel::RGB, { 128, 128, 128 } };
+// const Color Maroon = { ColorModel::RGB, { 128, 0, 0 } };
+// const Color Olive = { ColorModel::RGB, { 128, 128, 0 } };
+// const Color Green = { ColorModel::RGB, { 0, 128, 0 } };
+// const Color Purple = { ColorModel::RGB, { 128, 0, 128 } };
+// const Color Teal = { ColorModel::RGB, { 0, 128, 128 } };
+// const Color Navy = { ColorModel::RGB, { 0, 0, 128 } };
+
+const Color Red = { ColorModel::RGB, { 77, 0, 0 } };
+const Color Black = { ColorModel::RGB, { 0, 0, 0 } };
+const Color White = { ColorModel::RGB, { 77, 77, 77 } };
+const Color Red = { ColorModel::RGB, { 77, 0, 0 } };
+const Color Lime = { ColorModel::RGB, { 0, 77, 0 } };
+const Color Blue = { ColorModel::RGB, { 0, 0, 77 } };
+const Color Yellow = { ColorModel::RGB, { 77, 77, 0 } };
+const Color Cyan = { ColorModel::RGB, { 0, 77, 77 } };
+const Color Magenta = { ColorModel::RGB, { 77, 0, 77 } };
+const Color Silver = { ColorModel::RGB, { 58, 58, 58 } };
+const Color Gray = { ColorModel::RGB, { 38, 38, 38 } };
+const Color Maroon = { ColorModel::RGB, { 38, 0, 0 } };
+const Color Olive = { ColorModel::RGB, { 38, 38, 0 } };
+const Color Green = { ColorModel::RGB, { 0, 38, 0 } };
+const Color Purple = { ColorModel::RGB, { 38, 0, 38 } };
+const Color Teal = { ColorModel::RGB, { 0, 38, 38 } };
+const Color Navy = { ColorModel::RGB, { 0, 0, 38 } };
+
 inline uint8_t xy_to_pixel_num(const uint8_t x, const uint8_t y)
 {
     return ((x + 1) / 2) * (2 * MATRIX_HEIGHT - 1) + (x / 2) + (x % 2 == 0 ? y : -y);
@@ -54,7 +90,7 @@ inline uint8_t xy_to_pixel_num(const uint8_t x, const uint8_t y)
 inline void clear()
 {
     cli();
-	memset(vram, 0, NUMBER_OF_BYTES);
+    memset(vram, 0, NUMBER_OF_BYTES);
     sei();
 }
 
