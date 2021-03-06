@@ -22,27 +22,27 @@ const uint8_t COLOR_VALUES[5 * 3] PROGMEM = {
 
 ISR (TIMER0_COMP_vect)
 {
-	cli();
-	show(vram, NUMBER_OF_BYTES);
-	sei();
+    cli();
+    show(vram, NUMBER_OF_BYTES);
+    sei();
 }
 
 void init()
 {
-	DDRB = 0x00;
-	PORTB = 0x00;
-	
+    DDRB = 0x00;
+    PORTB = 0x00;
+    
     DDRD = 0x01;
     PORTD = 0x00;
 
     // Configure timer/counter 0 so that ISR is called at least 30 times per second
 
     // TCCR0 = 0x0D; // Timer/Counter configuration
-	// TIMSK = 0x02; // Enable output compare match interrupt
-	// OCR0 = 0x81;
-	
-	clear();
-	sei();
+    // TIMSK = 0x02; // Enable output compare match interrupt
+    // OCR0 = 0x81;
+    
+    clear();
+    sei();
 }
 
 /** do not call this function if you use auto frame refresh */
@@ -117,7 +117,7 @@ void draw()
     set_pixel(8, 2, Black);
     set_pixel(9, 4, Black);
     set_pixel(9, 2, darkkhaki); 
-	set_pixel(9, 3, darkkhaki); 
+    set_pixel(9, 3, darkkhaki); 
     set_pixel(10, 2, darkkhaki);
     set_pixel(10, 3, darkkhaki);
     set_pixel(10, 4, darkkhaki);
@@ -137,12 +137,12 @@ int main(void)
 
     draw();
 
-	// const uint8_t c = pgm_read_byte(&(COLOR_VALUES[0]));
+    // const uint8_t c = pgm_read_byte(&(COLOR_VALUES[0]));
 
     // uint8_t x = MATRIX_WIDTH / 2;
     // uint8_t y = MATRIX_HEIGHT / 2;
 
-	// set_pixel(x, y, {ColorModel::RGB, {30, 0, 0}});
+    // set_pixel(x, y, {ColorModel::RGB, {30, 0, 0}});
 
     while (1)
     {
