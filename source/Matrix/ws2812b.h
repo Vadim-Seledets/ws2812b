@@ -46,39 +46,39 @@ struct Color
         : color_model(cm), rgb(value) {}
 };
 
-// const Color Black = { ColorModel::RGB, { 0, 0, 0 } };
-// const Color White = { ColorModel::RGB, { 255, 255, 255 } };
-// const Color Red = { ColorModel::RGB, { 255, 0, 0 } };
-// const Color Lime = { ColorModel::RGB, { 0, 255, 0 } };
-// const Color Blue = { ColorModel::RGB, { 0, 0, 255 } };
-// const Color Yellow = { ColorModel::RGB, { 255, 255, 0 } };
-// const Color Cyan = { ColorModel::RGB, { 0, 255, 255 } };
-// const Color Magenta = { ColorModel::RGB, { 255, 0, 255 } };
-// const Color Silver = { ColorModel::RGB, { 192, 192, 192 } };
-// const Color Gray = { ColorModel::RGB, { 128, 128, 128 } };
-// const Color Maroon = { ColorModel::RGB, { 128, 0, 0 } };
-// const Color Olive = { ColorModel::RGB, { 128, 128, 0 } };
-// const Color Green = { ColorModel::RGB, { 0, 128, 0 } };
-// const Color Purple = { ColorModel::RGB, { 128, 0, 128 } };
-// const Color Teal = { ColorModel::RGB, { 0, 128, 128 } };
-// const Color Navy = { ColorModel::RGB, { 0, 0, 128 } };
-
 const Color Black = { ColorModel::RGB, { 0, 0, 0 } };
-const Color White = { ColorModel::RGB, { 25, 25, 25 } };
-const Color Red = { ColorModel::RGB, { 25, 0, 0 } };
-const Color Lime = { ColorModel::RGB, { 0, 25, 0 } };
-const Color Blue = { ColorModel::RGB, { 0, 0, 25 } };
-const Color Yellow = { ColorModel::RGB, { 25, 25, 0 } };
-const Color Cyan = { ColorModel::RGB, { 0, 25, 25 } };
-const Color Magenta = { ColorModel::RGB, { 25, 0, 25 } };
-const Color Silver = { ColorModel::RGB, { 19, 19, 19 } };
-const Color Gray = { ColorModel::RGB, { 13, 13, 13 } };
-const Color Maroon = { ColorModel::RGB, { 13, 0, 0 } };
-const Color Olive = { ColorModel::RGB, { 13, 13, 0 } };
-const Color Green = { ColorModel::RGB, { 0, 13, 0 } };
-const Color Purple = { ColorModel::RGB, { 13, 0, 13 } };
-const Color Teal = { ColorModel::RGB, { 0, 13, 13 } };
-const Color Navy = { ColorModel::RGB, { 0, 0, 13 } };
+const Color White = { ColorModel::RGB, { 255, 255, 255 } };
+const Color Red = { ColorModel::RGB, { 255, 0, 0 } };
+const Color Lime = { ColorModel::RGB, { 0, 255, 0 } };
+const Color Blue = { ColorModel::RGB, { 0, 0, 255 } };
+const Color Yellow = { ColorModel::RGB, { 255, 255, 0 } };
+const Color Cyan = { ColorModel::RGB, { 0, 255, 255 } };
+const Color Magenta = { ColorModel::RGB, { 255, 0, 255 } };
+const Color Silver = { ColorModel::RGB, { 192, 192, 192 } };
+const Color Gray = { ColorModel::RGB, { 128, 128, 128 } };
+const Color Maroon = { ColorModel::RGB, { 128, 0, 0 } };
+const Color Olive = { ColorModel::RGB, { 128, 128, 0 } };
+const Color Green = { ColorModel::RGB, { 0, 128, 0 } };
+const Color Purple = { ColorModel::RGB, { 128, 0, 128 } };
+const Color Teal = { ColorModel::RGB, { 0, 128, 128 } };
+const Color Navy = { ColorModel::RGB, { 0, 0, 128 } };
+
+// const Color Black = { ColorModel::RGB, { 0, 0, 0 } };
+// const Color White = { ColorModel::RGB, { 25, 25, 25 } };
+// const Color Red = { ColorModel::RGB, { 25, 0, 0 } };
+// const Color Lime = { ColorModel::RGB, { 0, 25, 0 } };
+// const Color Blue = { ColorModel::RGB, { 0, 0, 25 } };
+// const Color Yellow = { ColorModel::RGB, { 25, 25, 0 } };
+// const Color Cyan = { ColorModel::RGB, { 0, 25, 25 } };
+// const Color Magenta = { ColorModel::RGB, { 25, 0, 25 } };
+// const Color Silver = { ColorModel::RGB, { 19, 19, 19 } };
+// const Color Gray = { ColorModel::RGB, { 13, 13, 13 } };
+// const Color Maroon = { ColorModel::RGB, { 13, 0, 0 } };
+// const Color Olive = { ColorModel::RGB, { 13, 13, 0 } };
+// const Color Green = { ColorModel::RGB, { 0, 13, 0 } };
+// const Color Purple = { ColorModel::RGB, { 13, 0, 13 } };
+// const Color Teal = { ColorModel::RGB, { 0, 13, 13 } };
+// const Color Navy = { ColorModel::RGB, { 0, 0, 13 } };
 
 inline uint8_t xy_to_pixel_num(const uint8_t x, const uint8_t y)
 {
@@ -94,5 +94,8 @@ inline void clear()
 
 void show(uint8_t *bytes, uint16_t count);
 void set_pixel(const uint8_t x, const uint8_t y, const Color color);
+
+/** @param lightness the range is [0, 100]% */
+Color set_lightness(const Color color, const uint8_t lightness);
 
 #endif /* WS2812B_H_ */

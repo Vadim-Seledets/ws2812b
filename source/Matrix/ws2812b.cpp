@@ -110,3 +110,11 @@ void set_pixel(const uint8_t x, const uint8_t y, const Color color)
     vram[index + 2] = color.rgb.blue;
     sei();
 }
+
+Color set_lightness(Color color, const uint8_t lightness)
+{
+    const uint8_t red = color.rgb.red * lightness / 100;
+    const uint8_t green = color.rgb.green * lightness / 100;
+    const uint8_t blue = color.rgb.blue * lightness / 100;
+    return { ColorModel::RGB, { red, green, blue } };
+}
