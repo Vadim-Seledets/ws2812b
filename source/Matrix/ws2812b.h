@@ -46,7 +46,6 @@ struct Color
         : color_model(cm), rgb(value) {}
 };
 
-// const Color Red = { ColorModel::RGB, { 255, 0, 0 } };
 // const Color Black = { ColorModel::RGB, { 0, 0, 0 } };
 // const Color White = { ColorModel::RGB, { 255, 255, 255 } };
 // const Color Red = { ColorModel::RGB, { 255, 0, 0 } };
@@ -64,7 +63,6 @@ struct Color
 // const Color Teal = { ColorModel::RGB, { 0, 128, 128 } };
 // const Color Navy = { ColorModel::RGB, { 0, 0, 128 } };
 
-const Color Red = { ColorModel::RGB, { 77, 0, 0 } };
 const Color Black = { ColorModel::RGB, { 0, 0, 0 } };
 const Color White = { ColorModel::RGB, { 77, 77, 77 } };
 const Color Red = { ColorModel::RGB, { 77, 0, 0 } };
