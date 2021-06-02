@@ -1,10 +1,10 @@
 #ifndef WS2812B_H_
 #define WS2812B_H_
 
- #include <avr/io.h>
- #include <avr/interrupt.h>
- #include "stdlib.h"
- #include "string.h"
+#include <avr/io.h>
+#include <avr/interrupt.h>
+#include "stdlib.h"
+#include "string.h"
 
 const uint8_t MATRIX_WIDTH = 16;
 const uint8_t MATRIX_HEIGHT = 16;
@@ -80,7 +80,7 @@ const Color Navy = { ColorModel::RGB, { 0, 0, 128 } };
 // const Color Teal = { ColorModel::RGB, { 0, 13, 13 } };
 // const Color Navy = { ColorModel::RGB, { 0, 0, 13 } };
 
-inline uint8_t xy_to_pixel_num(const uint8_t x, const uint8_t y)
+inline uint8_t xy_to_pixel_index(const uint8_t x, const uint8_t y)
 {
     return ((x + 1) / 2) * (2 * MATRIX_HEIGHT - 1) + (x / 2) + (x % 2 == 0 ? y : -y);
 }
